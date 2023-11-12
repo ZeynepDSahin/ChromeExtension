@@ -10,6 +10,8 @@
         <input type="text" id="productName" name="productName"><br>
         <label for="shortDescription">Short Description:</label><br>
         <input type="text" id="shortDescription" name="shortDescription"><br>
+        <label for="occasion">Occasion:</label><br>
+        <input type="text" id="occasion" name="occasion"><br>
         <input type="submit" value="Submit">
     </form>
     <div id="response"></div>
@@ -23,7 +25,8 @@
                 contentType: "application/json",
                 data: JSON.stringify({
                     "productName": $("#productName").val(),
-                    "shortDescription": $("#shortDescription").val()
+                    "shortDescription": $("#shortDescription").val(),
+                    "occasion": $("#occasion").val()
                 }),
                 success: function(result){
                     $("#response").html(result.description);

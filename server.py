@@ -19,16 +19,35 @@ def generate_description():
     data = request.get_json()
     product_name = data['productName']
     short_description = data['shortDescription']
+    occasion = data['occasion']  # Get the occasion from the user's input
 
-    response = client.chat.completions.create(model="gpt-4",
+    # response = client.chat.completions.create(model="gpt-4",
+    # messages=[
+    #     {"role": "system", "content": "You are a helpful assistant."},
+    #     {"role": "user", "content": f"{product_name}. {short_description}. {occasion}."}  # Added occasion to the message
+    # ])
+
+    response = client.chat.completions.create(
+    model="gpt-4-vision-preview",
     messages=[
-        {"role": "system", "content": "You are a helpful assistant."},
-        {"role": "user", "content": f"{product_name}. {short_description}."}
-    ])
+        {
+            "role": "user",
+            "content": [
+                {"type": "text", "text": f"Write a product description for the product in the image. The product name: {product_name}. More details about what the product includes: {short_description}. The occasion for selling the product is: {occasion}."},
+                # {"type": "text", "text": "Write a product description for the product in the image."},
+                {
+                    "type": "image_url",
+                    "image_url": {
+                        "url": "https://m.media-amazon.com/images/I/21vAoa2HwOL.jpg",
+                    },
+                },
+            ],
+        }
+    ],
+    max_tokens=500,
+    )
 
     return jsonify({'description': response.choices[0].message.content})
-                    # response['choices'][0]['message']['content']})
-# response['choices'][0]['message']['content']
 
 if __name__ == '__main__':
     app.run(port=5000)
