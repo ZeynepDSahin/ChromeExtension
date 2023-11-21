@@ -1,6 +1,8 @@
 # server.py
 from flask import Flask, request, jsonify
 from flask_cors import CORS
+
+
 # from openai import OpenAI
 from openai import OpenAI
 
@@ -18,8 +20,8 @@ CORS(app, resources={r"/api/*": {"origins": "*"}})
 def generate_description():
     data = request.get_json()
     product_name = data['productName']
-    short_description = data['shortDescription']
-    occasion = data['occasion']  # Get the occasion from the user's input
+    # short_description = data['shortDescription']
+    # occasion = data['occasion']  # Get the occasion from the user's input
 
     # response = client.chat.completions.create(model="gpt-4",
     # messages=[
@@ -28,19 +30,21 @@ def generate_description():
     # ])
 
     response = client.chat.completions.create(
-    model="gpt-4-vision-preview",
+    model="gpt-4-1106-preview",
+    # model="gpt-4-vision-preview",
     messages=[
         {
             "role": "user",
             "content": [
-                {"type": "text", "text": f"Write a product description for the product in the image. The product name: {product_name}. More details about what the product includes: {short_description}. The occasion for selling the product is: {occasion}."},
+                {"type": "text", "text": f"Write a product description for the product in the image. The product name: {product_name}."},
                 # {"type": "text", "text": "Write a product description for the product in the image."},
-                {
-                    "type": "image_url",
-                    "image_url": {
-                        "url": "https://m.media-amazon.com/images/I/21vAoa2HwOL.jpg",
-                    },
-                },
+                
+                # {
+                #     "type": "image_url",
+                #     "image_url": {
+                #         "url": "https://m.media-amazon.com/images/I/21vAoa2HwOL.jpg",
+                #     },
+                # },
             ],
         }
     ],
