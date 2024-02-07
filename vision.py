@@ -2,7 +2,7 @@ from openai import OpenAI
 
 # client = OpenAI()
 
-client = OpenAI(api_key='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')
+client = OpenAI(api_key='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')
 
 response = client.chat.completions.create(
     model="gpt-4-vision-preview",

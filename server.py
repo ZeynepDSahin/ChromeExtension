@@ -6,20 +6,20 @@ from flask_cors import CORS
 # from openai import OpenAI
 from openai import OpenAI
 
-client = OpenAI(api_key='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')
-
-# client = OpenAI(api_key='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')
+client = OpenAI(api_key='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')
 
 
 
 app = Flask(__name__)
-CORS(app, resources={r"/api/*": {"origins": "*"}})
+# CORS(app, resources={r"/api/*": {"origins": "*"}})
+CORS(app)
 
 
 @app.route('/api/generate-description', methods=['POST'])
 def generate_description():
     data = request.get_json()
     product_name = data['productName']
+    print("Received data:", data)
     # short_description = data['shortDescription']
     # occasion = data['occasion']  # Get the occasion from the user's input
 
@@ -36,7 +36,7 @@ def generate_description():
         {
             "role": "user",
             "content": [
-                {"type": "text", "text": f"Write a product description for the product in the image. The product name: {product_name}."},
+                {"type": "text", "text": f"Write a product description for the product using the product name. The product name: {product_name}."},
                 # {"type": "text", "text": "Write a product description for the product in the image."},
                 
                 # {
