@@ -16,7 +16,7 @@ inputs.forEach(input => {
 
 function generateDescription() { 
   let productName = document.querySelector('#reconcile-item-title').textContent;
-  
+  let imageUrl = document.querySelector('.reconciled-image').src;
   fetch('http://127.0.0.1:5000/api/generate-description', {
     method: 'POST',
     headers: {
@@ -24,6 +24,7 @@ function generateDescription() {
     },
     body: JSON.stringify({
       productName: productName,
+      imageUrl: imageUrl
     }),
   })
   .then(response => {
