@@ -43,8 +43,8 @@ function generateDescription() {
       textarea.value = data.description;
       console.log('Detailed description inserted into the textbox');
     }
-  
-  
+    // Send message back to popup.js
+    chrome.runtime.sendMessage({action: "descriptionGenerated"});
   })
 
   // lastClickedTextbox=document.querySelector('#product_description');
@@ -68,5 +68,6 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
 });
 
 console.log('content.js script ended');
+
 
 
