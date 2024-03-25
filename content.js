@@ -17,7 +17,7 @@ inputs.forEach(input => {
 function generateDescription() { 
   let productName = document.querySelector('#reconcile-item-title').textContent;
   let imageUrl = document.querySelector('.reconciled-image').src;
-  fetch('chrome-extension-seo-helper-ZeynepDSahin/api/generate-description', {
+  fetch('https://chrome-extension-seo-helper-ZeynepDSahin.replit.app/api/generate-description', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
