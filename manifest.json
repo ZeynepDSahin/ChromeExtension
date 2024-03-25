@@ -1,12 +1,12 @@
 {
-    "manifest_version": 2,
+    "manifest_version": 3,
     "name": "Amazon SEO Helper",
     "description": "This extension will help Amazon sellers write SEO-friendly product descriptions.",
     "version": "1.0",
-    "permissions": ["activeTab", "https://sellercentral.amazon.com/"],
+    "permissions": ["activeTab"],
+    "host_permissions": ["https://sellercentral.amazon.com/"],
     "background": {
-      "scripts": ["background.js"],
-      "persistent": false
+      "service_worker": "background.js"
     },
     "content_scripts": [
       {
@@ -14,8 +14,8 @@
         "js": ["content.js"]
       }
     ],
-    "browser_action": {
+    "action": {
       "default_icon": "icon.png",
       "default_popup": "popup.html"
     }
-  }
+}
