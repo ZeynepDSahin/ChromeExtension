@@ -2,7 +2,7 @@
 //     chrome.tabs.executeScript(null, {file: "content.js"});
 //   });
 
-chrome.action.onClicked.addListener(function(tab) {
+chrome.action.onClicked.addListener((tab) => {
   chrome.scripting.executeScript({
     target: {tabId: tab.id},
     files: ['content.js']
