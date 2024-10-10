@@ -1,5 +1,5 @@
 # ChromeExtension
-First practice with building Chrome Extensions
+Amazon SEO Helper Chrome Extension for writing SEO product descriptions for Amazon listings
 
 <!-- "manifest_version": 2,
     "name": "Amazon SEO Helper",
