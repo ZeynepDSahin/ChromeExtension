@@ -1,4 +1,4 @@
-# ChromeExtension
+# Amazon Seo Helper Chrome Extension
 Amazon SEO Helper Chrome Extension for writing SEO product descriptions for Amazon listings
 
 <!-- "manifest_version": 2,
